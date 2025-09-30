@@ -4,370 +4,363 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Harika Aakula | Technical Portfolio</title>
-    <!-- Load React, Babel, and Tailwind from clean URLs -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     
     <style>
-        /* Ensure the content uses the full height and smooth scrolling */
+        /* Global CSS Settings */
         html { scroll-behavior: smooth; }
-        html, body, #root {
-            min-height: 100%;
-            margin: 0;
-            padding: 0;
+        body { background-color: #101728; color: #f3f4f6; font-family: 'Poppins', sans-serif; }
+
+        /* Tailwind Configuration Variables (Replicating JS constants) */
+        .bg-primary-bg { background-color: #101728; }
+        .bg-secondary-highlight { background-color: #1f2937; }
+        .text-primary-accent { color: #00ffff; }
+        .text-text-light { color: #f3f4f6; }
+        .border-primary-accent { border-color: #00ffff; }
+        .text-primary-bg { color: #101728; } 
+
+        /* Custom styles for modern aesthetic */
+        .tech-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-left 0.3s ease;
+            border-left: 4px solid transparent;
         }
+        .tech-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.15); 
+            border-left-color: #00ffff;
+        }
+        /* Button Style (Replicating primaryButtonStyle for readability in pure JS) */
+        .primary-btn {
+            background-color: #1f2937; /* secondary-highlight */
+            border: 2px solid #00ffff; /* primary-accent */
+            color: #00ffff; /* primary-accent */
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transform: translateY(0);
+        }
+        .primary-btn:hover {
+            background-color: #00ffff; /* primary-accent */
+            color: #101728; /* primary-bg */
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
+            transform: translateY(-4px); /* Stronger lift effect */
+        }
+
     </style>
 </head>
 <body>
     <div id="root"></div>
-    
-    <!-- ********************************************** -->
-    <!-- 1. FULL APPLICATION CODE (PASTE YOUR JSX HERE) -->
-    <!-- ********************************************** -->
-    <script type="text/babel">
-        // Tailwind Colors and Theme Configuration (Mimics previous dark theme)
-        const tailwindConfig = `
-            .bg-primary-bg { background-color: #101728; }
-            .bg-secondary-highlight { background-color: #1f2937; }
-            .text-primary-accent { color: #00ffff; }
-            .text-text-light { color: #f3f4f6; }
-            .border-primary-accent { border-color: #00ffff; }
-            .text-primary-bg { color: #101728; } 
 
-            /* Custom styles for modern aesthetic */
-            .tech-card {
-                transition: transform 0.3s ease, box-shadow 0.3s ease, border-left 0.3s ease;
-                border-left: 4px solid transparent;
-            }
-            .tech-card:hover {
-                transform: translateY(-5px);
-                box-shadow: 0 0 20px rgba(0, 255, 255, 0.15); 
-                border-left-color: #00ffff;
-            }
-        `;
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
 
-        // --- Utility Components ---
+    <script type="text/javascript">
+        // *******************************************************************
+        // FINAL FIX: PURE JAVASCRIPT RENDERING (No more crashing Babel/JSX)
+        // This is the functional equivalent of your React code, compiled down.
+        // *******************************************************************
+
+        const { useState, useEffect, createElement } = React;
+        const { createRoot } = ReactDOM;
+
+        // Data (Moved to top-level JS object)
+        const projectsData = [
+            {
+                title: "Self-Reflecting Portfolio (React/TypeScript)",
+                description: "A functional front-end project demonstrating proficiency in modern web development practices.",
+                details: [
+                    "Built a modular front-end with reusable <strong>React Components</strong> for clean structure and maintainability.",
+                    "Practiced code quality and type structure using <strong>TypeScript</strong> principles during development.",
+                    "Implemented a clean, <strong>mobile-first UI</strong> with Flexbox/Grid and subtle animations for an engaging user experience.",
+                    "Structured with <strong>semantic HTML5</strong> for improved accessibility (A11Y) and SEO performance.",
+                ],
+                tags: ["React/JSX", "TypeScript (Learning)", "Tailwind CSS", "Modular Design", "A11Y"],
+                projectLink: null,
+            },
+            {
+                title: "Automated Quality Suite for Enterprise Apps",
+                description: "A scalable automation framework developed to drastically cut manual efforts and stabilize production.",
+                details: [
+                    "Developed <strong>Selenium (Java)</strong> and <strong>Postman</strong> test scenarios, achieving a <strong>40% reduction in manual effort.</strong>",
+                    "Executed <strong>400+ test cases</strong> and contributed to a <strong>30% defect reduction</strong> rate over 2 years.",
+                    "Implemented <strong>SQL validation scripts</strong> to ensure data consistency between the database and the UI.",
+                ],
+                tags: ["Java/Selenium", "Postman (API)", "SQL", "CI/CD Ready", "Quality Assurance"],
+                projectLink: null,
+            },
+            {
+                title: "KPI-Driven Analytics Pipeline & Dashboard",
+                description: "Built an end-to-end data intelligence system for critical business engagement insights.",
+                details: [
+                    "Managed the <strong>ETL workflow (Python)</strong> to clean, transform, and validate <strong>25k+ records</strong> for reporting accuracy.",
+                    "Designed and implemented a comprehensive, filterable <strong>Google Looker Studio</strong> dashboard.",
+                    "Led a remote team (5+) ensuring <strong>Agile process compliance</strong> and stakeholder alignment.",
+                ],
+                tags: ["Python ETL", "Looker Studio", "Data Quality", "Agile Leadership"],
+                projectLink: "https://lookerstudio.google.com/reporting/dashboard-link", 
+            },
+            {
+                title: "Statistical Analysis of Electric Vehicles",
+                description: "Data analysis project focused on electric vehicle trends in Washington State using statistical methods.",
+                details: [
+                    "Performed data analysis and cleaning on the Electric Vehicles dataset of Washington state with over <strong>232k records.</strong>",
+                    "Conducted <strong>statistical tests (IBM SPSS)</strong> to analyze EV trends, focusing on CAFV eligibility and top-performing brands.",
+                    "Provided insights on vehicle adoption patterns to inform future infrastructure planning.",
+                ],
+                tags: ["Data Analysis", "Python/Pandas", "IBM SPSS", "Statistical Modeling"],
+                projectLink: "https://github.com/harikaaakula/ev-analysis-report",
+            },
+        ];
+
+        const timelineData = [
+            {
+                title: "Quality Engineering Associate",
+                company: "Accenture Solutions Private Limited, Hyderabad, India",
+                duration: "Dec 2021 – Dec 2023",
+                description: "Led automation efforts (Selenium/Postman), conducted extensive database validations (SQL), and drove agile defect resolution. Served as a trainer for 20+ new team members.",
+                accentClass: "bg-primary-accent",
+            },
+            {
+                title: "Data Analyst Associate Intern",
+                company: "Excelerate, Remote",
+                duration: "June 2024 – July 2024",
+                description: "Managed key data integrity and ETL processes (Python), created a critical KPI-driven dashboard, and led daily team standups for remote project coordination.",
+                accentClass: "bg-primary-accent",
+            },
+            {
+                title: "Master of Science | Information Systems (GPA: 4.0)",
+                company: "Saint Louis University, St. Louis, Missouri",
+                duration: "Jan 2024 – Dec 2025",
+                description: "",
+                accentClass: "bg-gray-500",
+            },
+        ];
+
+        // Component mapping using pure React.createElement (JSX equivalent)
         const NavItem = ({ href, children }) => (
-            <a href={href} className="text-text-light font-medium hover:font-semibold transition duration-300 transform hover:scale-[1.05] hover:text-primary-accent border-b-2 border-transparent hover:border-primary-accent pb-1">
-                {children}
-            </a>
+            createElement('a', {
+                href: href,
+                className: "text-text-light font-medium hover:font-semibold transition duration-300 transform hover:scale-[1.05] hover:text-primary-accent border-b-2 border-transparent hover:border-primary-accent pb-1"
+            }, children)
         );
 
-        const Card = ({ title, description, details, tags, projectLink, children }) => (
-            <div className="bg-secondary-highlight p-8 rounded-xl shadow-2xl tech-card border-t-4 border-primary-accent">
-                <h4 className="text-2xl font-semibold text-text-light mb-4">{title}</h4>
-                <p className="text-gray-400 text-base mb-6">{description}</p>
-                
-                {/* Detail List FIX: Using dangerouslySetInnerHTML to correctly render the <strong> tags */}
-                <ul className="list-disc text-gray-300 space-y-3 ml-4 mb-6">
-                    {details.map((item, index) => (
-                        <li key={index} dangerouslySetInnerHTML={{ __html: item }} />
-                    ))}
-                </ul>
+        const Card = ({ title, description, details, tags, projectLink }) => {
+            const detailList = details.map((item, index) => (
+                createElement('li', { key: index, dangerouslySetInnerHTML: { __html: item } })
+            ));
 
-                {/* Tags */}
-                <div className="mt-6 flex flex-wrap gap-2">
-                    {tags.map((tag, index) => (
-                        <span key={index} className="text-xs font-medium bg-primary-accent/20 text-primary-accent px-3 py-1 rounded-full">
-                            {tag}
-                        </span>
-                    ))}
-                </div>
-                {children}
-                {/* CORRECTED: Link now uses the dynamic projectLink prop, conditionally rendered */}
-                {projectLink && (
-                    <a href={projectLink} target="_blank" rel="noopener noreferrer" className="mt-6 inline-block text-primary-accent hover:text-white font-medium transition duration-200">
-                        View Project &rarr;
-                    </a>
-                )}
-            </div>
-        );
+            const tagElements = tags.map((tag, index) => (
+                createElement('span', {
+                    key: index,
+                    className: "text-xs font-medium bg-primary-accent/20 text-primary-accent px-3 py-1 rounded-full"
+                }, tag)
+            ));
 
-        // --- Main Application Component ---
+            const projectLinkElement = projectLink ? (
+                createElement('a', {
+                    href: projectLink,
+                    target: "_blank",
+                    rel: "noopener noreferrer",
+                    className: "mt-6 inline-block text-primary-accent hover:text-white font-medium transition duration-200"
+                }, "View Project →")
+            ) : null;
+
+            return createElement('div', {
+                className: "bg-secondary-highlight p-8 rounded-xl shadow-2xl tech-card border-t-4 border-primary-accent"
+            }, 
+                createElement('h4', { className: "text-2xl font-semibold text-text-light mb-4" }, title),
+                createElement('p', { className: "text-gray-400 text-base mb-6" }, description),
+                createElement('ul', { className: "list-disc text-gray-300 space-y-3 ml-4 mb-6" }, detailList),
+                createElement('div', { className: "mt-6 flex flex-wrap gap-2" }, tagElements),
+                projectLinkElement
+            );
+        };
+
         const App = () => {
-            const [currentYear, setCurrentYear] = React.useState(new Date().getFullYear());
+            const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
             
-            // Stronger hover effects (translate-y-1, shadow-2xl)
-            const primaryButtonStyle = "bg-secondary-highlight border-2 border-primary-accent text-primary-accent font-semibold transition duration-300 shadow-md hover:bg-primary-accent hover:text-primary-bg hover:shadow-2xl hover:-translate-y-1";
-
-            const projectsData = [
-                {
-                    title: "Self-Reflecting Portfolio (React/TypeScript)",
-                    description: "A functional front-end project demonstrating proficiency in modern web development practices.",
-                    details: [
-                        "Built a modular front-end with reusable <strong>React Components</strong> for clean structure and maintainability.",
-                        "Practiced code quality and type structure using <strong>TypeScript</strong> principles during development.",
-                        "Implemented a clean, <strong>mobile-first UI</strong> with Flexbox/Grid and subtle animations for an engaging user experience.",
-                        "Structured with <strong>semantic HTML5</strong> for improved accessibility (A11Y) and SEO performance.",
-                    ],
-                    tags: ["React/JSX", "TypeScript (Learning)", "Tailwind CSS", "Modular Design", "A11Y"],
-                    projectLink: null, // No link for currently developing project
-                },
-                {
-                    title: "Automated Quality Suite for Enterprise Apps",
-                    description: "A scalable automation framework developed to drastically cut manual efforts and stabilize production.",
-                    details: [
-                        "Developed <strong>Selenium (Java)</strong> and <strong>Postman</strong> test scenarios, achieving a <strong>40% reduction in manual effort.</strong>",
-                        "Executed <strong>400+ test cases</strong> and contributed to a <strong>30% defect reduction</strong> rate over 2 years.",
-                        "Implemented <strong>SQL validation scripts</strong> to ensure data consistency between the database and the UI.",
-                    ],
-                    tags: ["Java/Selenium", "Postman (API)", "SQL", "CI/CD Ready", "Quality Assurance"],
-                    projectLink: null, // No link for internal/proprietary project
-                },
-                {
-                    title: "KPI-Driven Analytics Pipeline & Dashboard",
-                    description: "Built an end-to-end data intelligence system for critical business engagement insights.",
-                    details: [
-                        "Managed the <strong>ETL workflow (Python)</strong> to clean, transform, and validate <strong>25k+ records</strong> for reporting accuracy.",
-                        "Designed and implemented a comprehensive, filterable <strong>Google Looker Studio</strong> dashboard.",
-                        "Led a remote team (5+) ensuring <strong>Agile process compliance</strong> and stakeholder alignment.",
-                    ],
-                    tags: ["Python ETL", "Looker Studio", "Data Quality", "Agile Leadership"],
-                    projectLink: "https://lookerstudio.google.com/reporting/dashboard-link", // TODO: Update with actual dashboard link
-                },
-                {
-                    title: "Statistical Analysis of Electric Vehicles",
-                    description: "Data analysis project focused on electric vehicle trends in Washington State using statistical methods.",
-                    details: [
-                        "Performed data analysis and cleaning on the Electric Vehicles dataset of Washington state with over <strong>232k records.</strong>",
-                        "Conducted <strong>statistical tests (IBM SPSS)</strong> to analyze EV trends, focusing on CAFV eligibility and top-performing brands.",
-                        "Provided insights on vehicle adoption patterns to inform future infrastructure planning.",
-                    ],
-                    tags: ["Data Analysis", "Python/Pandas", "IBM SPSS", "Statistical Modeling"],
-                    projectLink: "https://github.com/harikaaakula/ev-analysis-report", // TODO: Update with actual report/code link
-                },
-            ];
-
-            const timelineData = [
-                {
-                    title: "Quality Engineering Associate",
-                    company: "Accenture Solutions Private Limited, Hyderabad, India",
-                    duration: "Dec 2021 – Dec 2023",
-                    description: "Led automation efforts (Selenium/Postman), conducted extensive database validations (SQL), and drove agile defect resolution. Served as a trainer for 20+ new team members.",
-                    accentClass: "bg-primary-accent",
-                },
-                {
-                    title: "Data Analyst Associate Intern",
-                    company: "Excelerate, Remote",
-                    duration: "June 2024 – July 2024",
-                    description: "Managed key data integrity and ETL processes (Python), created a critical KPI-driven dashboard, and led daily team standups for remote project coordination.",
-                    accentClass: "bg-primary-accent",
-                },
-                {
-                    title: "Master of Science | Information Systems (GPA: 4.0)",
-                    company: "Saint Louis University, St. Louis, Missouri",
-                    duration: "Jan 2024 – Dec 2025",
-                    description: "",
-                    accentClass: "bg-gray-500",
-                },
-            ];
+            // Standardized button style (using CSS definitions)
+            const primaryButtonStyleClass = "primary-btn px-6 py-4 rounded-lg";
+            const heroButtonStyleClass = "primary-btn px-8 py-3 rounded-lg";
 
             return (
-                <div className="bg-primary-bg min-h-screen font-sans antialiased" style={{ fontFamily: 'Poppins, sans-serif' }}>
-                    {/* Inject Tailwind CSS config */}
-                    <style dangerouslySetInnerHTML={{ __html: tailwindConfig }} />
+                createElement('div', { className: "bg-primary-bg min-h-screen" },
+                    // --- Header ---
+                    createElement('header', { className: "sticky top-0 z-50 bg-primary-bg shadow-2xl border-b border-secondary-highlight/50" },
+                        createElement('div', { className: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center" },
+                            createElement('h1', { className: "text-2xl font-extrabold text-primary-accent tracking-wider cursor-pointer" }, "Harika Aakula"),
+                            createElement('nav', { className: "hidden md:flex space-x-8 text-sm font-medium" },
+                                createElement(NavItem, { href: "#summary" }, "Profile"),
+                                createElement(NavItem, { href: "#skills" }, "Expertise"),
+                                createElement(NavItem, { href: "#projects" }, "Projects"),
+                                createElement(NavItem, { href: "#experience" }, "Timeline"),
+                                createElement('a', { href: "#contact", className: `primary-btn px-5 py-2 rounded-full` }, "Connect")
+                            )
+                        )
+                    ),
 
-                    {/* Header & Navigation */}
-                    <header className="sticky top-0 z-50 bg-primary-bg shadow-2xl border-b border-secondary-highlight/50">
-                        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-                            <h1 className="text-2xl font-extrabold text-primary-accent tracking-wider cursor-pointer">
-                                Harika Aakula
-                            </h1>
-                            <nav className="hidden md:flex space-x-8 text-sm font-medium">
-                                <NavItem href="#summary">Profile</NavItem>
-                                <NavItem href="#skills">Expertise</NavItem>
-                                <NavItem href="#projects">Projects</NavItem>
-                                <NavItem href="#experience">Timeline</NavItem>
-                                {/* Nav Connect button using standardized style */}
-                                <a href="#contact" className={`${primaryButtonStyle} px-5 py-2 rounded-full`}>Connect</a>
-                            </nav>
-                        </div>
-                    </header>
+                    // --- Main Content ---
+                    createElement('main', null,
+                        // Hero Section
+                        createElement('section', { id: "summary", className: "py-24 md:py-32 border-b border-secondary-highlight" },
+                            createElement('div', { className: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-12 gap-12 items-center text-left" },
+                                createElement('div', { className: "lg:col-span-8" },
+                                    createElement('p', { className: "text-xl font-medium text-primary-accent mb-4" }, "Hello, I'm Harika Aakula"),
+                                    createElement('h2', { className: "text-6xl sm:text-7xl lg:text-8xl font-extrabold tracking-tighter leading-tight mb-6 text-text-light" }, 
+                                        "Engineering Excellence ", 
+                                        createElement('span', { className: "text-primary-accent" }, "Driven by Impact"),
+                                        createElement('span', { className: "block text-gray-500 text-4xl mt-3" }, "Automation, Data & Modern Development.")
+                                    ),
+                                    createElement('h3', { className: "text-2xl text-gray-400 font-light max-w-4xl mb-8" }, 
+                                        "Master's Candidate in IS, focused on high-impact ", 
+                                        createElement('strong', null, "SDET, Java/Python Development, and Data Intelligence"),
+                                        ", actively building front-end proficiency."
+                                    ),
+                                    createElement('p', { className: "text-lg text-gray-500 max-w-4xl mb-10" }, 
+                                        "My experience focuses on ", 
+                                        createElement('strong', null, "measurable impact"),
+                                        ": achieving a ", 
+                                        createElement('strong', null, "40% reduction in manual effort"),
+                                        " through automation (Selenium, Postman) and contributing to a ", 
+                                        createElement('strong', null, "30% defect reduction"),
+                                        " in production systems across key technical domains."
+                                    ),
+                                    createElement('div', { className: "space-x-6" },
+                                        createElement('a', { href: "#projects", className: `${heroButtonStyleClass} inline-block` }, "Explore Projects & Solutions"),
+                                        createElement('a', { href: "/Harika_Aakula_Resume.pdf", download: "Harika_Aakula_Resume.pdf", className: `${heroButtonStyleClass} inline-block` }, "Download Resume (PDF)")
+                                    )
+                                ),
+                                // Placeholder graphic
+                                createElement('div', { className: "lg:col-span-4 hidden lg:block relative" },
+                                    createElement('svg', { className: "w-full h-auto text-primary-accent opacity-30", viewBox: "0 0 200 200", fill: "none", xmlns: "http://www.w3.org/2000/svg", style: { filter: 'drop-shadow(0 0 3px rgba(0, 255, 255, 0.5))' } },
+                                        createElement('path', { d: "M100 0L140 60H180L150 100L180 140H140L100 200L60 140H20L50 100L20 60H60L100 0Z", stroke: "currentColor", strokeWidth: "5", strokeLinejoin: "round" }),
+                                        createElement('circle', { cx: "100", cy: "100", r: "30", stroke: "currentColor", strokeWidth: "5", fill: "none" })
+                                    )
+                                )
+                            )
+                        ),
 
-                    <main>
-                        {/* Hero & Summary Section */}
-                        <section id="summary" className="py-24 md:py-32 border-b border-secondary-highlight">
-                            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-12 gap-12 items-center">
-                                <div className="lg:col-span-8 text-left">
-                                    <p className="text-xl font-medium text-primary-accent mb-4">Hello, I'm Harika Aakula</p>
-                                    <h2 className="text-6xl sm:text-7xl lg:text-8xl font-extrabold tracking-tighter leading-tight mb-6 text-text-light">
-                                        Engineering Excellence <span className='text-primary-accent'>Driven by Impact</span>.
-                                        <span className="block text-gray-500 text-4xl mt-3">Automation, Data & Modern Development.</span>
-                                    </h2>
-                                    <h3 className="text-2xl text-gray-400 font-light max-w-4xl mb-8">
-                                        Master's Candidate in IS, focused on high-impact <strong>SDET, Java/Python Development, and Data Intelligence</strong>, actively building front-end proficiency.
-                                    </h3>
-                                    <p className="text-lg text-gray-500 max-w-4xl mb-10">
-                                        My experience focuses on <strong>measurable impact</strong>: achieving a <strong>40% reduction in manual effort</strong> through automation (Selenium, Postman) and contributing to a <strong>30% defect reduction</strong> in production systems across key technical domains.
-                                    </p>
-                                    <div className="space-x-6">
-                                        {/* Explore Projects button using standardized style */}
-                                        <a href="#projects" className={`${primaryButtonStyle} px-8 py-3 rounded-lg inline-block`}>Explore Projects & Solutions</a>
-                                        
-                                        {/* Download Resume button updated to use standardized style and cleaned text */}
-                                        <a href="/Harika_Aakula_Resume.pdf" download="Harika_Aakula_Resume.pdf" className={`${primaryButtonStyle} px-8 py-3 rounded-lg inline-block`}>Download Resume (PDF)</a>
-                                    </div>
-                                </div>
+                        // Skills Section
+                        createElement('section', { id: "skills", className: "py-16 md:py-24 border-b border-secondary-highlight" },
+                            createElement('div', { className: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" },
+                                createElement('h3', { className: "text-4xl font-bold text-center mb-4 text-text-light" }, "Technical Expertise"),
+                                createElement('p', { className: "text-center text-gray-500 max-w-2xl mx-auto mb-12" }, "Bridging the gap between front-end development, quality engineering, and data integrity."),
+                                createElement('div', { className: "grid md:grid-cols-3 gap-8" },
+                                    // Block 1: Front-End & Development
+                                    createElement('div', { className: "bg-secondary-highlight p-6 rounded-xl tech-card shadow-lg" },
+                                        createElement('h4', { className: "text-xl font-bold mb-4 flex items-center text-primary-accent" }, createElement('span', { className: "text-3xl mr-3 font-extrabold" }, "<R />"), "Front-End & Development"),
+                                        createElement('ul', { className: "space-y-2 text-base text-gray-300" },
+                                            createElement('li', null, createElement('strong', null, "Core:"), " Java, Python, C/C++"),
+                                            createElement('li', null, createElement('strong', null, "Web Dev:"), " JavaScript, HTML, CSS"),
+                                            createElement('li', null, createElement('strong', null, "Learning:"), " React, TypeScript (Self-taught Projects)"),
+                                            createElement('li', null, createElement('strong', null, "Tools:"), " GitHub, Visual Studio, Figma")
+                                        )
+                                    ),
+                                    // Block 2: Automation & SDET
+                                    createElement('div', { className: "bg-secondary-highlight p-6 rounded-xl tech-card shadow-lg" },
+                                        createElement('h4', { className: "text-xl font-bold mb-4 flex items-center text-primary-accent" }, createElement('span', { className: "text-3xl mr-3 font-extrabold" }, "✓"), "Automation & SDET"),
+                                        createElement('ul', { className: "space-y-2 text-base text-gray-300" },
+                                            createElement('li', null, createElement('strong', null, "Test Automation:"), " Selenium (Java), Postman (REST API)"),
+                                            createElement('li', null, createElement('strong', null, "Testing:"), " Database Validation (SQL), Test Design, JMeter"),
+                                            createElement('li', null, createElement('strong', null, "CI/CD:"), " Jenkins, SDLC, Agile (Scrum/Kanban)"),
+                                            createElement('li', null, createElement('strong', null, "QA/Risk:"), " Compliance Monitoring, Defect Management (Jira)")
+                                        )
+                                    ),
+                                    // Block 3: Data Intelligence & Governance
+                                    createElement('div', { className: "bg-secondary-highlight p-6 rounded-xl tech-card shadow-lg" },
+                                        createElement('h4', { className: "text-xl font-bold mb-4 flex items-center text-primary-accent" }, createElement('span', { className: "text-3xl mr-3 font-extrabold" }, "∑"), "Data & Governance"),
+                                        createElement('ul', { className: "space-y-2 text-base text-gray-300" },
+                                            createElement('li', null, createElement('strong', null, "Pipeline:"), " Python (ETL, EDA), SQL Server"),
+                                            createElement('li', null, createElement('strong', null, "BI:"), " Google Looker Studio, IBM SPSS"),
+                                            createElement('li', null, createElement('strong', null, "Frameworks:"), " NIST Cybersecurity, TOGAF"),
+                                            createElement('li', null, createElement('strong', null, "Cloud:"), " Azure, GCP, AWS Exposure")
+                                        )
+                                    )
+                                )
+                            )
+                        ),
 
-                                <div className="lg:col-span-4 hidden lg:block relative">
-                                    {/* Futuristic Graphic Element */}
-                                    <svg className="w-full h-auto text-primary-accent opacity-30" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ filter: 'drop-shadow(0 0 3px rgba(0, 255, 255, 0.5))' }}>
-                                        <path d="M100 0L140 60H180L150 100L180 140H140L100 200L60 140H20L50 100L20 60H60L100 0Z" stroke="currentColor" strokeWidth="5" strokeLinejoin="round"/>
-                                        <circle cx="100" cy="100" r="30" stroke="currentColor" strokeWidth="5" fill="none"/>
-                                    </svg>
-                                </div>
-                            </div>
-                        </section>
+                        // Projects Section
+                        createElement('section', { id: "projects", className: "py-16 md:py-24" },
+                            createElement('div', { className: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" },
+                                createElement('h3', { className: "text-4xl font-bold text-center mb-4 text-text-light" }, "High-Impact Projects"),
+                                createElement('p', { className: "text-center text-gray-500 max-w-2xl mx-auto mb-12" }, "Showcasing solutions in Development, QA Automation, and Data Analytics."),
+                                createElement('div', { className: "grid lg:grid-cols-3 gap-10" },
+                                    projectsData.map((project, index) => createElement(Card, {
+                                        key: index,
+                                        title: project.title,
+                                        description: project.description,
+                                        details: project.details,
+                                        tags: project.tags,
+                                        projectLink: project.projectLink
+                                    }))
+                                )
+                            )
+                        ),
 
-                        {/* Skills Section */}
-                        <section id="skills" className="py-16 md:py-24 border-b border-secondary-highlight">
-                            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                                <h3 className="text-4xl font-bold text-center mb-4 text-text-light">Technical Expertise</h3>
-                                <p className="text-center text-gray-500 max-w-2xl mx-auto mb-12">Bridging the gap between front-end development, quality engineering, and data integrity.</p>
+                        // Experience Section
+                        createElement('section', { id: "experience", className: "py-16 md:py-24 bg-primary-bg/80 border-t border-secondary-highlight" },
+                            createElement('div', { className: "max-w-4xl mx-auto px-4 sm:px-6 lg:px-8" },
+                                createElement('h3', { className: "text-4xl font-bold text-center mb-4 text-text-light" }, "Professional Timeline"),
+                                createElement('p', { className: "text-center text-gray-500 max-w-2xl mx-auto mb-12" }, "Chronology of growth in quality engineering and data intelligence."),
+                                createElement('div', { className: "space-y-12" },
+                                    timelineData.map((item, index) => (
+                                        createElement('div', { key: index, className: "relative pl-12 border-l-2 border-primary-accent/50 hover:border-primary-accent transition duration-300" },
+                                            createElement('div', { className: `absolute w-4 h-4 rounded-full -left-2 top-0 shadow-lg ${item.accentClass}` }),
+                                            createElement('p', { className: "text-sm font-semibold text-gray-400 uppercase tracking-wider" }, item.duration),
+                                            createElement('h4', { className: "text-xl font-bold text-text-light mt-1" }, item.title),
+                                            createElement('p', { className: "text-md font-medium text-primary-accent mb-4" }, item.company),
+                                            item.description && createElement('p', { className: "text-gray-400" }, item.description)
+                                        )
+                                    ))
+                                )
+                            )
+                        ),
 
-                                <div className="grid md:grid-cols-3 gap-8">
-                                    {/* Skills Block 1: Front-End & Development (New Focus) */}
-                                    <div className="bg-secondary-highlight p-6 rounded-xl tech-card shadow-lg">
-                                        <h4 className="text-xl font-bold mb-4 flex items-center text-primary-accent">
-                                            <span className="text-3xl mr-3 font-extrabold">&lt;R /&gt;</span>
-                                            Front-End & Development
-                                        </h4>
-                                        <ul className="space-y-2 text-base text-gray-300">
-                                            <li><strong>Core:</strong> Java, Python, C/C++</li>
-                                            <li><strong>Web Dev:</strong> JavaScript, HTML, CSS</li>
-                                            <li><strong>Learning:</strong> React, TypeScript (Self-taught Projects)</li>
-                                            <li><strong>Tools:</strong> GitHub, Visual Studio, Figma</li>
-                                        </ul>
-                                    </div>
+                        // Contact Section
+                        createElement('section', { id: "contact", className: "py-16 md:py-24 border-t border-secondary-highlight" },
+                            createElement('div', { className: "max-w-xl mx-auto px-4 sm:px-6 lg:px-8 text-center" },
+                                createElement('h3', { className: "text-4xl font-bold text-text-light mb-4" }, "Let's Connect and Collaborate"),
+                                createElement('p', { className: "text-gray-400 mb-10" }, "I am seeking challenging roles (SDET, Software Engineer, Data Analyst) where my combined expertise in quality and data intelligence can deliver substantial business value."),
+                                createElement('div', { className: "space-y-4 sm:space-y-0 sm:space-x-4 flex flex-wrap justify-center" },
+                                    // Email Me Directly button
+                                    createElement('a', { href: "mailto:harika.aakula05@gmail.com", className: `primary-btn px-6 py-4 rounded-lg w-full sm:w-auto inline-flex items-center justify-center` },
+                                        createElement('svg', { className: "w-5 h-5 mr-2", fill: "none", stroke: "currentColor", viewBox: "0 0 24 24" }, createElement('path', { strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: "2", d: "M3 8l7.89 5.26a2 2 0 002.22 0L21 8m-2 4v7a2 2 0 01-2 2H5a2 2 0 01-2-2v-7" })),
+                                        "Email Me Directly"
+                                    ),
+                                    // GitHub Profile Button
+                                    createElement('a', { href: "https://github.com/harikaaakula?tab=repositories", target: "_blank", rel: "noopener noreferrer", className: `primary-btn px-6 py-4 rounded-lg w-full sm:w-auto inline-flex items-center justify-center` },
+                                        createElement('svg', { className: "w-5 h-5 mr-2", fill: "currentColor", viewBox: "0 0 24 24", 'aria-hidden': "true" }, createElement('path', { fillRule: "evenodd", d: "M12 2C6.477 2 2 6.477 2 12c0 4.256 2.73 7.857 6.518 9.195.474.087.646-.205.646-.455 0-.224-.008-.819-.012-1.602-2.656.577-3.218-1.282-3.218-1.282-.435-1.106-1.06-1.399-1.06-1.399-.867-.594.065-.583.065-.583.961.069 1.467.988 1.467.988.855 1.467 2.238 1.043 2.782.795.087-.618.334-1.043.608-1.282-2.128-.246-4.364-1.064-4.364-4.721 0-1.043.374-1.895.988-2.557-.099-.244-.43-1.209.094-2.51 0 0 .805-.256 2.646.984.764-.213 1.57-.319 2.375-.323.805.004 1.611.11 2.375.323 1.841-1.24 2.646-.984 2.646-.984.524 1.3.193 2.266.094 2.51.614.662.988 1.514.988 2.557 0 3.665-2.236 4.471-4.364 4.721.344.298.646.882.646 1.782 0 1.289-.012 2.33-.012 2.646 0 .25.172.542.646.455C19.27 19.857 22 16.256 22 12c0-5.523-4.477-10-10-10z", clipRule: "evenodd" })),
+                                        "GitHub Profile"
+                                    ),
+                                    // LinkedIn Profile Button
+                                    createElement('a', { href: "https://www.linkedin.com/in/harika-aakula-634b48198", target: "_blank", rel: "noopener noreferrer", className: `primary-btn px-6 py-4 rounded-lg w-full sm:w-auto inline-flex items-center justify-center` },
+                                        createElement('svg', { className: "w-5 h-5 mr-2", fill: "currentColor", viewBox: "0 0 24 24", xmlns: "http://www.w3.org/2000/svg" }, createElement('path', { d: "M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.142-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.76 7 2.387v6.848z" })),
+                                        "LinkedIn Profile"
+                                    )
+                                )
+                            )
+                        ),
 
-                                    {/* Skills Block 2: Quality Engineering & SDET */}
-                                    <div className="bg-secondary-highlight p-6 rounded-xl tech-card shadow-lg">
-                                        <h4 className="text-xl font-bold mb-4 flex items-center text-primary-accent">
-                                            <span className="text-3xl mr-3 font-extrabold">&#x2713;</span>
-                                            Automation & SDET
-                                        </h4>
-                                        <ul className="space-y-2 text-base text-gray-300">
-                                            <li><strong>Test Automation:</strong> Selenium (Java), Postman (REST API)</li>
-                                            <li><strong>Testing:</strong> Database Validation (SQL), Test Design, JMeter</li>
-                                            <li><strong>CI/CD:</strong> Jenkins, SDLC, Agile (Scrum/Kanban)</li>
-                                            <li><strong>QA/Risk:</strong> Compliance Monitoring, Defect Management (Jira)</li>
-                                        </ul>
-                                    </div>
-
-                                    {/* Skills Block 3: Data Intelligence & Governance */}
-                                    <div className="bg-secondary-highlight p-6 rounded-xl tech-card shadow-lg">
-                                        <h4 className="text-xl font-bold mb-4 flex items-center text-primary-accent">
-                                            <span className="text-3xl mr-3 font-extrabold">&#x2211;</span>
-                                            Data & Governance
-                                        </h4>
-                                        <ul className="space-y-2 text-base text-gray-300">
-                                            <li><strong>Pipeline:</strong> Python (ETL, EDA), SQL Server</li>
-                                            <li><strong>BI:</strong> Google Looker Studio, IBM SPSS</li>
-                                            <li><strong>Frameworks:</strong> NIST Cybersecurity, TOGAF</li>
-                                            <li><strong>Cloud:</strong> Azure, GCP, AWS Exposure</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </section>
-
-                        {/* Projects Section */}
-                        <section id="projects" className="py-16 md:py-24">
-                            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                                <h3 className="text-4xl font-bold text-center mb-4 text-text-light">High-Impact Projects</h3>
-                                <p className="text-center text-gray-500 max-w-2xl mx-auto mb-12">Showcasing solutions in Development, QA Automation, and Data Analytics.</p>
-
-                                <div className="grid lg:grid-cols-3 gap-10">
-                                    {projectsData.map((project, index) => (
-                                        <Card
-                                            key={index}
-                                            title={project.title}
-                                            description={project.description}
-                                            details={project.details}
-                                            tags={project.tags}
-                                            projectLink={project.projectLink}
-                                        >
-                                        </Card>
-                                    ))}
-                                </div>
-                            </div>
-                        </section>
-
-                        {/* Experience Section */}
-                        <section id="experience" className="py-16 md:py-24 bg-primary-bg/80 border-t border-secondary-highlight">
-                            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-                                <h3 className="text-4xl font-bold text-center mb-4 text-text-light">Professional Timeline</h3>
-                                <p className="text-center text-gray-500 max-w-2xl mx-auto mb-12">Chronology of growth in quality engineering and data intelligence.</p>
-
-                                <div className="space-y-12">
-                                    {timelineData.map((item, index) => (
-                                        <div key={index} className="relative pl-12 border-l-2 border-primary-accent/50 hover:border-primary-accent transition duration-300">
-                                            <div className={`absolute w-4 h-4 rounded-full -left-2 top-0 shadow-lg ${item.accentClass}`}></div>
-                                            <p className="text-sm font-semibold text-gray-400 uppercase tracking-wider">{item.duration}</p>
-                                            <h4 className="text-xl font-bold text-text-light mt-1">{item.title}</h4>
-                                            <p className="text-md font-medium text-primary-accent mb-4">{item.company}</p>
-                                            {item.description && <p className="text-gray-400">{item.description}</p>}
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                        </section>
-
-
-                        {/* Contact Section */}
-                        <section id="contact" className="py-16 md:py-24 border-t border-secondary-highlight">
-                            <div className="max-w-xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                                <h3 className="text-4xl font-bold text-text-light mb-4">Let's Connect and Collaborate</h3>
-                                <p className="text-gray-400 mb-10">
-                                    I am seeking challenging roles (SDET, Software Engineer, Data Analyst) where my combined expertise in quality and data intelligence can deliver substantial business value.
-                                </p>
-
-                                <div className="space-y-4 sm:space-y-0 sm:space-x-4 flex flex-wrap justify-center">
-                                    {/* FIX: Email link is confirmed correct and functional for deployed site */}
-                                    <a href="mailto:harika.aakula05@gmail.com" className={`${primaryButtonStyle} w-full sm:w-auto inline-flex items-center justify-center px-6 py-4 rounded-lg`}>
-                                        <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8m-2 4v7a2 2 0 01-2 2H5a2 2 0 01-2-2v-7"></path></svg>
-                                        Email Me Directly
-                                    </a>
-                                    
-                                    {/* GitHub Profile Button using standardized style */}
-                                    <a href="https://github.com/harikaaakula?tab=repositories" target="_blank" rel="noopener noreferrer" className={`${primaryButtonStyle} w-full sm:w-auto inline-flex items-center justify-center px-6 py-4 rounded-lg`}>
-                                        <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                            <path fillRule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.256 2.73 7.857 6.518 9.195.474.087.646-.205.646-.455 0-.224-.008-.819-.012-1.602-2.656.577-3.218-1.282-3.218-1.282-.435-1.106-1.06-1.399-1.06-1.399-.867-.594.065-.583.065-.583.961.069 1.467.988 1.467.988.855 1.467 2.238 1.043 2.782.795.087-.618.334-1.043.608-1.282-2.128-.246-4.364-1.064-4.364-4.721 0-1.043.374-1.895.988-2.557-.099-.244-.43-1.209.094-2.51 0 0 .805-.256 2.646.984.764-.213 1.57-.319 2.375-.323.805.004 1.611.11 2.375.323 1.841-1.24 2.646-.984 2.646-.984.524 1.3.193 2.266.094 2.51.614.662.988 1.514.988 2.557 0 3.665-2.236 4.471-4.364 4.721.344.298.646.882.646 1.782 0 1.289-.012 2.33-.012 2.646 0 .25.172.542.646.455C19.27 19.857 22 16.256 22 12c0-5.523-4.477-10-10-10z" clipRule="evenodd" />
-                                    </svg>
-                                    GitHub Profile
-                                </a>
-                                
-                                {/* FIX: LinkedIn link is updated with the correct URL */}
-                                <a href="https://www.linkedin.com/in/harika-aakula-634b48198" target="_blank" rel="noopener noreferrer" className={`${primaryButtonStyle} w-full sm:w-auto inline-flex items-center justify-center px-6 py-4 rounded-lg`}>
-                                    <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.142-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.76 7 2.387v6.848z"/></svg>
-                                    LinkedIn Profile
-                                </a>
-                            </div>
-
-                        </div>
-                    </section>
-
-                </main>
-
-                {/* Footer */}
-                <footer className="bg-gray-950 text-white py-8">
-                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-500">
-                        <p>&copy; {currentYear} Harika Aakula. Technical Portfolio.</p>
-                    </div>
-                </footer>
-            </div>
-        );
+                        // Footer
+                        createElement('footer', { className: "bg-gray-950 text-white py-8" },
+                            createElement('div', { className: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-500" },
+                                createElement('p', null, `© ${currentYear} Harika Aakula. Technical Portfolio.`)
+                            )
+                        )
+                    )
+                )
+            );
+        };
         
         // **********************************************
-        // 2. RENDERING INSTRUCTIONS (WINDOW.ONLOAD FIX)
+        // RENDERING INSTRUCTIONS (WINDOW.ONLOAD FIX)
         // **********************************************
-        // This waits until all scripts (React/Babel) are loaded before running the app.
         window.onload = function() {
             const container = document.getElementById('root');
-            const root = ReactDOM.createRoot(container);
-            root.render(<App />);
+            const root = createRoot(container);
+            root.render(createElement(App));
         };
     </script>
 </body>
