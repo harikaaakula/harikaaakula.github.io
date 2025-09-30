@@ -46,7 +46,9 @@
             box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
             transform: translateY(-4px); /* Stronger lift effect */
         }
-
+.hero-sub-headline {
+            line-height: 1.25 !important; /* Forces extra vertical space */
+        }
     </style>
 </head>
 <body>
@@ -210,7 +212,7 @@
                                     createElement('h2', { className: "text-6xl sm:text-7xl lg:text-8xl font-extrabold tracking-tighter leading-tight mb-6 text-text-light" }, 
                                         "Engineering Excellence ", 
                                         createElement('span', { className: "text-primary-accent" }, "Driven by Impact"),
-                                        createElement('span', { className: "block text-gray-500 text-3xl sm:text-4xl mt-3 whitespace-normal leading-normal" }, "Automation, Data & Modern Development.")
+                                        createElement('span', { className: "block text-gray-500 text-3xl sm:text-4xl mt-3 whitespace-normal hero-sub-headline" }, "Automation, Data & Modern Development.")
                                     ),
                                     createElement('h3', { className: "text-2xl text-gray-400 font-light max-w-4xl mb-8" }, 
                                         "Master's Candidate in IS, focused on high-impact ", 
