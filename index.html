@@ -48,20 +48,53 @@
             transform: translateY(-4px); /* Stronger lift effect */
         }
         
-        /* Unique Feature: Animated Data Stream Background */
-        @keyframes datastream {
-            from {
-                background-position: 0 0;
+        /* ************************************************************ */
+        /* UNIQUE FEATURE: NEON GLITCH GRID ANIMATION */
+        /* ************************************************************ */
+        @keyframes glitch {
+            0% {
+                transform: translate(0, 0);
             }
-            to {
-                background-position: 0 -100px;
+            20% {
+                transform: translate(-2px, 2px);
+            }
+            40% {
+                transform: translate(-2px, -2px);
+            }
+            60% {
+                transform: translate(2px, 2px);
+            }
+            80% {
+                transform: translate(2px, -2px);
+            }
+            100% {
+                transform: translate(0, 0);
             }
         }
-        .data-stream-bg {
-            background: linear-gradient(rgba(13, 13, 13, 0.9), rgba(13, 13, 13, 0.9)), 
-                        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"><text x="0" y="15" fill="%231a1a1a" font-size="16">10</text></svg>');
-            background-repeat: repeat;
-            animation: datastream 10s linear infinite;
+
+        .neon-glitch-grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 1; /* Below content */
+            background-image: repeating-linear-gradient(
+                0deg, 
+                rgba(176, 60, 255, 0.05), /* Purple Glow */
+                rgba(0, 255, 255, 0.05) 1px, /* Cyan Glow */
+                transparent 100px
+            ), repeating-linear-gradient(
+                90deg, 
+                rgba(176, 60, 255, 0.05),
+                rgba(0, 255, 255, 0.05) 1px,
+                transparent 100px
+            );
+            background-size: 100% 100%;
+            opacity: 0.6;
+            animation: glitch 1.5s infinite alternate;
         }
 
         /* FIX: TARGETING THE OVERLAPPING HEADLINE WITH AGGRESSIVE LINE-HEIGHT */
@@ -141,21 +174,21 @@
                 company: "Accenture Solutions Private Limited, Hyderabad, India",
                 duration: "Dec 2021 – Dec 2023",
                 description: "Led automation efforts (Selenium/Postman), conducted extensive database validations (SQL), and drove agile defect resolution. Served as a trainer for 20+ new team members.",
-                accentClass: "bg-primary-accent",
+                accentClass: "text-primary-accent",
             },
             {
                 title: "Data Analyst Associate Intern",
                 company: "Excelerate, Remote",
                 duration: "June 2024 – July 2024",
                 description: "Managed key data integrity and ETL processes (Python), created a critical KPI-driven dashboard, and led daily team standups for remote project coordination.",
-                accentClass: "bg-primary-accent",
+                accentClass: "text-primary-accent",
             },
             {
                 title: "Master of Science | Information Systems (GPA: 4.0)",
                 company: "Saint Louis University, St. Louis, Missouri",
                 duration: "Jan 2024 – Dec 2025",
                 description: "",
-                accentClass: "bg-gray-500",
+                accentClass: "text-gray-500",
             },
         ];
 
@@ -167,7 +200,7 @@
             }, children)
         );
 
-        const Card = ({ title, description, details, tags, projectLink, children }) => {
+        const Card = ({ title, description, details, tags, projectLink }) => {
             const detailList = details.map((item, index) => (
                 createElement('li', { key: index, dangerouslySetInnerHTML: { __html: item } })
             ));
@@ -224,23 +257,37 @@
 
                     // --- Main Content ---
                     createElement('main', null,
+                        // Profile Image Section (NEW)
+                        createElement('section', { className: "py-10 border-b border-secondary-highlight bg-secondary-highlight/50" },
+                            createElement('div', { className: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center" },
+                                createElement('img', { 
+                                    src: "/Harika_Profile.jpg", 
+                                    alt: "Harika Aakula Profile Photo", 
+                                    className: "w-40 h-40 rounded-full object-cover border-4 border-primary-accent shadow-2xl transition duration-500 hover:scale-105" 
+                                }),
+                                createElement('h4', { className: "text-xl font-medium mt-4 text-text-light" }, "St. Louis, MO, USA")
+                            )
+                        ),
+
                         // Hero Section
-                        createElement('section', { id: "summary", className: "py-24 md:py-32 border-b border-secondary-highlight data-stream-bg" },
-                            createElement('div', { className: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-12 gap-12 items-center text-left" },
-                                createElement('div', { className: "lg:col-span-8" },
+                        createElement('section', { id: "summary", className: "py-24 md:py-32 border-b border-secondary-highlight relative" },
+                            createElement('div', { className: "neon-glitch-grid" }),
+                            createElement('div', { className: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-12 gap-12 items-center text-left relative z-10" },
+                                createElement('div', { className: "lg:col-span-12 text-center" },
                                     createElement('p', { className: "text-xl font-medium text-secondary-accent mb-4" }, "Hello, I'm Harika Aakula"),
                                     createElement('h2', { className: "text-6xl sm:text-7xl lg:text-8xl font-extrabold tracking-tighter leading-tight mb-6 text-text-light" }, 
                                         "Engineering Excellence ", 
-                                        createElement('span', { className: "text-primary-accent" }, "Driven by Impact"),
-                                        // FIX 1: Reduced font size and applied aggressive custom line-height fix
-                                        createElement('span', { className: "block hero-sub-headline text-3xl sm:text-4xl mt-3 whitespace-normal" }, "Automation, Data & Modern Development.")
+                                        createElement('span', { className: "text-primary-accent" }, "Driven by Impact")
                                     ),
-                                    createElement('h3', { className: "text-2xl text-gray-400 font-light max-w-4xl mb-8" }, 
+                                    // FIX 1: Applied aggressive line-height fix and reduced font size for mobile
+                                    createElement('span', { className: "block hero-sub-headline text-3xl sm:text-4xl mt-3 whitespace-normal" }, "Automation, Data & Modern Development."),
+
+                                    createElement('h3', { className: "text-2xl text-gray-400 font-light max-w-4xl mx-auto mb-8 mt-8" }, 
                                         "Master's Candidate in IS, focused on high-impact ", 
                                         createElement('strong', null, "SDET, Java/Python Development, and Data Intelligence"),
                                         ", actively building front-end proficiency."
                                     ),
-                                    createElement('p', { className: "text-lg text-gray-400 max-w-4xl mb-10" }, 
+                                    createElement('p', { className: "text-lg text-gray-400 max-w-4xl mx-auto mb-10" }, 
                                         "My experience focuses on ", 
                                         createElement('strong', null, "measurable impact"),
                                         ": achieving a ", 
@@ -252,13 +299,6 @@
                                     createElement('div', { className: "space-x-6" },
                                         createElement('a', { href: "#projects", className: `${heroButtonStyleClass} inline-block` }, "Explore Projects & Solutions"),
                                         createElement('a', { href: "/Harika_Aakula_Resume.pdf", download: "Harika_Aakula_Resume.pdf", className: `${heroButtonStyleClass} inline-block` }, "Download Resume (PDF)")
-                                    )
-                                ),
-                                // Placeholder graphic
-                                createElement('div', { className: "lg:col-span-4 hidden lg:block relative" },
-                                    createElement('svg', { className: "w-full h-auto text-primary-accent opacity-30", viewBox: "0 0 200 200", fill: "none", xmlns: "http://www.w3.org/2000/svg", style: { filter: 'drop-shadow(0 0 3px rgba(176, 60, 255, 0.5))' } },
-                                        createElement('path', { d: "M100 0L140 60H180L150 100L180 140H140L100 200L60 140H20L50 100L20 60H60L100 0Z", stroke: "currentColor", strokeWidth: "5", strokeLinejoin: "round" }),
-                                        createElement('circle', { cx: "100", cy: "100", r: "30", stroke: "currentColor", strokeWidth: "5", fill: "none" })
                                     )
                                 )
                             )
