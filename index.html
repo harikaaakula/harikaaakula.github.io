@@ -3,234 +3,214 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Harika Aakula | Portfolio</title>
+<title>Harika Aakula | Data Analytics Portfolio</title>
 
 <!-- Tailwind CSS -->
 <script src="https://cdn.tailwindcss.com"></script>
+<!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-
-<!-- AOS Animation Library -->
+<!-- AOS Animations -->
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-
 <!-- Particles.js -->
-<script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.1/tsparticles.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
 
 <style>
-body { font-family: 'Poppins', sans-serif; background:#0b0b0b; color:#e5e7eb; overflow-x:hidden; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Poppins', sans-serif; background:#0b0b0b; color:#e5e7eb; }
 .bg-panel { background:#141414; }
 .accent-purple { color:#a855f7; }
 .accent-cyan { color:#22d3ee; }
-.card { background:#1a1a1a; border-radius:16px; border:1px solid #262626; transition: transform .3s, box-shadow .3s; }
-.card:hover { transform: translateY(-6px); box-shadow: 0 0 30px rgba(168,85,247,.25); }
+.card { background:#141414; border:1px solid #262626; border-radius:16px; transition:transform .3s, box-shadow .3s; }
+.card:hover { transform:translateY(-6px); box-shadow:0 0 30px rgba(168,85,247,.25); }
 .btn { border:1px solid #a855f7; color:#a855f7; padding:10px 18px; border-radius:999px; transition:.3s; }
 .btn:hover { background:#a855f7; color:#0b0b0b; }
-.skill-icon { font-size:2rem; margin-bottom:8px; }
-.project-img { border-radius:12px; transition: transform .3s; }
-.project-img:hover { transform: scale(1.05); }
+.skill-icon { font-size:24px; margin-right:8px; }
+.section-title { font-size:2.5rem; font-weight:700; margin-bottom:1rem; }
+.section-sub { font-size:1.1rem; color:#aaa; margin-bottom:2rem; }
 </style>
 </head>
 
 <body>
-<div id="particles"></div>
-<div id="root"></div>
+<!-- Particles Background -->
+<div id="particles-js" class="fixed inset-0 z-0"></div>
 
-<script src="https://unpkg.com/react@18/umd/react.development.js"></script>
-<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-<script src="https://unpkg.com/react-icons@4.10.1/dist/react-icons.min.js"></script>
+<div class="relative z-10">
 
+<!-- NAVIGATION -->
+<header class="sticky top-0 bg-black/80 backdrop-blur border-b border-gray-800 z-50">
+  <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+    <span class="font-bold accent-cyan">Harika Aakula</span>
+    <nav class="space-x-6 text-sm">
+      <a href="#about" class="hover:accent-cyan">About</a>
+      <a href="#education" class="hover:accent-cyan">Education</a>
+      <a href="#experience" class="hover:accent-cyan">Experience</a>
+      <a href="#projects" class="hover:accent-cyan">Projects</a>
+      <a href="#skills" class="hover:accent-cyan">Skills</a>
+      <a href="#achievements" class="hover:accent-cyan">Achievements</a>
+      <a href="#creative" class="hover:accent-cyan">Art</a>
+      <a href="#contact" class="hover:accent-cyan">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ABOUT -->
+<section id="about" class="py-24 text-center" data-aos="fade-up">
+  <img src="your-picture.png" alt="Harika Aakula" class="mx-auto rounded-full w-40 mb-6 border-4 border-accent-purple">
+  <h1 class="text-5xl font-bold mb-4">Harika Aakula</h1>
+  <p class="text-gray-400 max-w-3xl mx-auto mb-4">
+    Adaptable, quick learner, and passionate about transforming data into actionable insights. 
+    Experienced in data analysis, visualization, and cloud security projects, with a creative side in art, painting, and crochet.
+  </p>
+  <a href="resume.pdf" class="btn">Download Resume</a>
+</section>
+
+<!-- EDUCATION -->
+<section id="education" class="py-20 max-w-6xl mx-auto px-6" data-aos="fade-right">
+  <h2 class="section-title accent-purple">Education</h2>
+  <div class="space-y-6">
+    <div class="card p-6">
+      <h3 class="font-bold text-xl">Master's in Information Systems</h3>
+      <p class="text-gray-400">Saint Louis University – School for Professional Studies</p>
+      <ul class="text-gray-300 list-disc ml-5 mt-2">
+        <li>Relevant Courses: Information Systems Strategy, Data Visualization, Cloud Security, Applied Analytics</li>
+        <li>Graduation: 2026</li>
+      </ul>
+    </div>
+    <div class="card p-6">
+      <h3 class="font-bold text-xl">Bachelor's in [Your Field]</h3>
+      <p class="text-gray-400">[Your University]</p>
+      <ul class="text-gray-300 list-disc ml-5 mt-2">
+        <li>Relevant Courses: [Course 1], [Course 2]</li>
+        <li>Graduation: [Year]</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" class="py-20 max-w-6xl mx-auto px-6" data-aos="fade-left">
+  <h2 class="section-title accent-cyan">Professional Experience</h2>
+  <div class="space-y-6">
+    <div class="card p-6">
+      <h3 class="font-bold text-xl">Data Analyst Intern</h3>
+      <p class="text-gray-400">Excelerate</p>
+      <p class="text-gray-300 mt-2">Built ETL pipelines and KPI dashboards supporting real-time business decisions.</p>
+    </div>
+    <div class="card p-6">
+      <h3 class="font-bold text-xl">Quality Engineering Associate</h3>
+      <p class="text-gray-400">Accenture</p>
+      <p class="text-gray-300 mt-2">Automated test suites and validated data integrity across enterprise systems.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="py-20 max-w-6xl mx-auto px-6" data-aos="fade-up">
+  <h2 class="section-title accent-purple">Major Projects</h2>
+  <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div class="card p-4">
+      <img src="project1-img1.png" alt="Project 1" class="mb-2 rounded">
+      <img src="project1-img2.png" alt="Project 1" class="mb-2 rounded">
+      <h3 class="font-bold text-lg">AI-Powered Cybersecurity Recruitment Platform</h3>
+      <p class="text-gray-300 text-sm mt-1">AI-driven candidate scoring, skill verification, and real-time recruiter analytics dashboard.</p>
+      <a href="#" class="btn mt-2 inline-block">View Project</a>
+    </div>
+    <div class="card p-4">
+      <img src="project2-img1.png" alt="Project 2" class="mb-2 rounded">
+      <img src="project2-img2.png" alt="Project 2" class="mb-2 rounded">
+      <h3 class="font-bold text-lg">Washington State Data Breach Dashboard</h3>
+      <p class="text-gray-300 text-sm mt-1">Power BI dashboard analyzing data breaches with actionable insights for policymakers.</p>
+      <a href="#" class="btn mt-2 inline-block">View Project</a>
+    </div>
+    <div class="card p-4">
+      <img src="project3-img1.png" alt="Project 3" class="mb-2 rounded">
+      <img src="project3-img2.png" alt="Project 3" class="mb-2 rounded">
+      <h3 class="font-bold text-lg">Electric Vehicles Statistical Analysis</h3>
+      <p class="text-gray-300 text-sm mt-1">Statistical study of EV adoption trends using SPSS and Washington State datasets.</p>
+      <a href="#" class="btn mt-2 inline-block">View Project</a>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="py-20 max-w-6xl mx-auto px-6" data-aos="fade-up">
+  <h2 class="section-title accent-cyan">Technical Skills</h2>
+  <div class="grid grid-cols-2 md:grid-cols-3 gap-6 mt-6">
+    <div class="card p-4 flex items-center">
+      <span class="skill-icon">🐍</span><span>Python (Pandas, NumPy)</span>
+    </div>
+    <div class="card p-4 flex items-center">
+      <span class="skill-icon">💾</span><span>SQL & Databases</span>
+    </div>
+    <div class="card p-4 flex items-center">
+      <span class="skill-icon">📊</span><span>Data Visualization (Power BI, Looker)</span>
+    </div>
+    <div class="card p-4 flex items-center">
+      <span class="skill-icon">🧪</span><span>Statistical Analysis (SPSS)</span>
+    </div>
+    <div class="card p-4 flex items-center">
+      <span class="skill-icon">⚡</span><span>ETL & Automation</span>
+    </div>
+  </div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section id="achievements" class="py-20 max-w-6xl mx-auto px-6" data-aos="fade-up">
+  <h2 class="section-title accent-purple">Achievements</h2>
+  <div class="grid md:grid-cols-3 gap-6 mt-6">
+    <div class="card p-6 text-center">🎖 Certified in Cloud Security (CYBR-5240)</div>
+    <div class="card p-6 text-center">🏆 Dean’s List – Graduate Program</div>
+    <div class="card p-6 text-center">📈 Presented EV Analysis Findings at University Seminar</div>
+  </div>
+</section>
+
+<!-- CREATIVE WORK -->
+<section id="creative" class="py-20 max-w-6xl mx-auto px-6" data-aos="fade-up">
+  <h2 class="section-title accent-cyan">Creative Work</h2>
+  <div class="grid md:grid-cols-3 gap-6 mt-6">
+    <img src="art1.png" class="rounded shadow-md" alt="Art 1">
+    <img src="art2.png" class="rounded shadow-md" alt="Art 2">
+    <img src="art3.png" class="rounded shadow-md" alt="Art 3">
+    <img src="art4.png" class="rounded shadow-md" alt="Art 4">
+    <img src="art5.png" class="rounded shadow-md" alt="Art 5">
+    <img src="art6.png" class="rounded shadow-md" alt="Art 6">
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="py-24 text-center" data-aos="fade-up">
+  <h2 class="section-title accent-purple">Get in Touch</h2>
+  <p class="text-gray-400 mb-10">Available for full-time Data Analyst roles starting Jan 2026 (OPT)</p>
+  <div class="flex justify-center gap-6">
+    <a href="mailto:harika.aakula05@gmail.com" class="btn">Email</a>
+    <a href="https://github.com/harikaaakula" class="btn">GitHub</a>
+    <a href="https://linkedin.com/in/harika-aakula-634b48198" class="btn">LinkedIn</a>
+  </div>
+</section>
+
+</div>
+
+<!-- Scripts -->
 <script>
-const { createElement, useState, useEffect } = React;
-const { createRoot } = ReactDOM;
-const { FaPython, FaDatabase, FaChartBar, FaProjectDiagram, FaCode, FaPaintBrush } = ReactIcons;
+AOS.init();
 
-/* --------------- DATA ---------------- */
-const about = {
-  name: "Harika Aakula",
-  intro: "Data Analyst & Cybersecurity Enthusiast with a passion for transforming data into actionable insights. Adaptable, quick learner, and creatively inclined in art and design.",
-  picture: "PLACEHOLDER_FOR_YOUR_PICTURE.jpg",
-  resume: "PLACEHOLDER_FOR_YOUR_RESUME.pdf"
-};
-
-const education = [
-  { degree:"MS in Information Systems", uni:"Saint Louis University", years:"2025-2026", details:"Courses: Data Analytics, Cloud Security, Software Development, Applied Research Methods" }
-];
-
-const experience = [
-  { role:"Data Analyst Intern", org:"Excelerate", years:"2025", impact:"Built ETL pipelines and dashboards supporting real-time business decisions." },
-  { role:"Quality Engineering Associate", org:"Accenture", years:"2024-2025", impact:"Automated test suites and validated data integrity across enterprise systems." }
-];
-
-const skills = [
-  { icon:<FaPython />, name:"Python (Pandas, NumPy)" },
-  { icon:<FaDatabase />, name:"SQL & Databases" },
-  { icon:<FaChartBar />, name:"Data Visualization (Power BI, Looker)" },
-  { icon:<FaProjectDiagram />, name:"ETL & Data Cleaning" },
-  { icon:<FaCode />, name:"Web & App Development" },
-  { icon:<FaPaintBrush />, name:"Creative Design & Art" }
-];
-
-const achievements = [
-  "Dean’s List 2025",
-  "Certified Python & SQL Practitioner",
-  "Power BI Data Storytelling Award",
-  "Hackathon Winner - Cybersecurity Challenge"
-];
-
-const projects = [
-  {
-    title:"AI-Powered Cybersecurity Recruitment Platform",
-    images:["PLACEHOLDER1.jpg","PLACEHOLDER2.jpg","PLACEHOLDER3.jpg"],
-    link:"#"
+particlesJS('particles-js', {
+  "particles": {
+    "number": { "value": 80 },
+    "color": { "value": ["#a855f7", "#22d3ee"] },
+    "shape": { "type": "circle" },
+    "opacity": { "value": 0.5 },
+    "size": { "value": 3 },
+    "line_linked": { "enable": true, "distance": 120, "color": "#a855f7", "opacity": 0.3, "width": 1 },
+    "move": { "enable": true, "speed": 2 }
   },
-  {
-    title:"Washington State Data Breach Dashboard",
-    images:["PLACEHOLDER4.jpg","PLACEHOLDER5.jpg","PLACEHOLDER6.jpg"],
-    link:"#"
+  "interactivity": {
+    "events": { "onhover": { "enable": true, "mode": "repulse" } }
   },
-  {
-    title:"Electric Vehicles Statistical Analysis",
-    images:["PLACEHOLDER7.jpg","PLACEHOLDER8.jpg","PLACEHOLDER9.jpg"],
-    link:"#"
-  }
-];
-
-const creative = [
-  "ART_PLACEHOLDER1.jpg","ART_PLACEHOLDER2.jpg","ART_PLACEHOLDER3.jpg",
-  "ART_PLACEHOLDER4.jpg","ART_PLACEHOLDER5.jpg","ART_PLACEHOLDER6.jpg"
-];
-
-/* --------------- COMPONENTS ---------------- */
-
-const Section = ({ id, title, children }) =>
-  createElement("section",{id,className:"py-20"},
-    createElement("div",{className:"max-w-6xl mx-auto px-6"},
-      createElement("h2",{className:"text-4xl font-bold mb-10", "data-aos":"fade-up"},title),
-      children
-    )
-  );
-
-const App = () => {
-  useEffect(()=>{AOS.init({duration:800});},[]);
-
-  return createElement("div",null,
-    /* NAV */
-    createElement("header",{className:"sticky top-0 bg-black/80 backdrop-blur border-b border-gray-800 z-50"},
-      createElement("div",{className:"max-w-6xl mx-auto px-6 py-4 flex justify-between items-center"},
-        createElement("span",{className:"font-bold accent-cyan"},"Harika Aakula"),
-        createElement("nav",{className:"space-x-6 text-sm"},
-          ["About","Education","Experience","Skills","Projects","Achievements","Creative"].map(s =>
-            createElement("a",{href:"#"+s.toLowerCase(),className:"hover:accent-cyan"},s)
-          )
-        )
-      )
-    ),
-
-    /* HERO / ABOUT */
-    createElement("section",{id:"about",className:"py-28 flex flex-col md:flex-row items-center max-w-6xl mx-auto px-6"},
-      createElement("img",{src:about.picture,className:"w-48 h-48 rounded-full mb-6 md:mb-0 md:mr-10 border-4 border-accent-purple", "data-aos":"fade-right"}),
-      createElement("div",{"data-aos":"fade-left"},
-        createElement("h1",{className:"text-5xl font-extrabold mb-4"},"Hi, I'm ", createElement("span",{className:"accent-purple"},about.name)),
-        createElement("p",{className:"text-gray-400 mb-6"},about.intro),
-        createElement("a",{href:about.resume, className:"btn"},"View Resume")
-      )
-    ),
-
-    /* EDUCATION */
-    createElement(Section,{id:"education",title:"Education"},
-      education.map(e=>
-        createElement("div",{className:"card p-6 mb-6 flex flex-col md:flex-row items-center", "data-aos":"fade-up"},
-          createElement("div",{className:"md:w-2/3"},
-            createElement("h3",{className:"text-xl font-bold"},e.degree),
-            createElement("p",{className:"accent-cyan"},e.uni + " | " + e.years),
-            createElement("p",{className:"text-gray-400 mt-2"},e.details)
-          )
-        )
-      )
-    ),
-
-    /* EXPERIENCE */
-    createElement(Section,{id:"experience",title:"Professional Experience"},
-      experience.map(e=>
-        createElement("div",{className:"card p-6 mb-6 flex flex-col md:flex-row", "data-aos":"fade-up"},
-          createElement("div",{className:"md:w-2/3"},
-            createElement("h3",{className:"text-xl font-bold"},e.role),
-            createElement("p",{className:"accent-cyan"},e.org + " | " + e.years),
-            createElement("p",{className:"text-gray-400 mt-2"},e.impact)
-          )
-        )
-      )
-    ),
-
-    /* SKILLS */
-    createElement(Section,{id:"skills",title:"Skills"},
-      createElement("div",{className:"grid grid-cols-2 md:grid-cols-3 gap-8"},
-        skills.map(s=>
-          createElement("div",{className:"card p-6 flex flex-col items-center text-center", "data-aos":"zoom-in"},
-            createElement("div",{className:"skill-icon mb-2"},s.icon),
-            createElement("p",{className:"mt-2 font-semibold"},s.name)
-          )
-        )
-      )
-    ),
-
-    /* PROJECTS */
-    createElement(Section,{id:"projects",title:"Projects"},
-      projects.map(p=>
-        createElement("div",{className:"card p-6 mb-6", "data-aos":"fade-up"},
-          createElement("h3",{className:"text-xl font-bold mb-4"},p.title),
-          createElement("div",{className:"grid grid-cols-3 gap-4 mb-4"},
-            p.images.map(img => createElement("img",{src:img,className:"project-img"}))
-          ),
-          createElement("a",{href:p.link,className:"btn"},"View Project")
-        )
-      )
-    ),
-
-    /* ACHIEVEMENTS */
-    createElement(Section,{id:"achievements",title:"Achievements"},
-      createElement("div",{className:"grid md:grid-cols-2 lg:grid-cols-4 gap-6"},
-        achievements.map(a=>
-          createElement("div",{className:"card p-6 text-center", "data-aos":"flip-left"},
-            createElement("p",{className:"font-semibold"},a)
-          )
-        )
-      )
-    ),
-
-    /* CREATIVE */
-    createElement(Section,{id:"creative",title:"Creative Portfolio"},
-      createElement("div",{className:"grid md:grid-cols-3 gap-6"},
-        creative.map(img => createElement("img",{src:img,className:"project-img", "data-aos":"fade-up"}))
-      )
-    )
-  );
-};
-
-createRoot(document.getElementById("root")).render(createElement(App));
-
-/* ---------------- Particles Background ---------------- */
-tsParticles.load("particles", {
-  fpsLimit: 60,
-  background: { color: "#0b0b0b" },
-  particles: {
-    number: { value: 80, density: { enable: true, area: 800 } },
-    color: { value: ["#a855f7","#22d3ee"] },
-    shape: { type: "circle" },
-    opacity: { value: 0.3 },
-    size: { value: { min: 1, max: 4 } },
-    move: { enable: true, speed: 1, direction: "none", outMode: "bounce" }
-  },
-  interactivity: {
-    events: { onHover: { enable: true, mode: "repulse" }, onClick: { enable: false } },
-    modes: { repulse: { distance: 100 } }
-  },
-  detectRetina: true
+  "retina_detect": true
 });
 </script>
 
-<script>
-AOS.init({ duration: 800 });
-</script>
 </body>
 </html>
