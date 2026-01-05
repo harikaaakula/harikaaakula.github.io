@@ -1,223 +1,209 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Harika Aakula | Data Analytics Portfolio</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Your Name | Data Analytics Portfolio</title>
 
-<script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
-<style>
-html { scroll-behavior: smooth; }
-body { background:#0b0b0b; color:#e5e7eb; font-family:'Poppins',sans-serif; }
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
 
-.bg-panel { background:#141414; }
-.accent-purple { color:#a855f7; }
-.accent-cyan { color:#22d3ee; }
+    body {
+      background: linear-gradient(-45deg, #0f2027, #203a43, #2c5364);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+      color: #ffffff;
+      line-height: 1.6;
+    }
 
-.card {
-  background:#141414;
-  border:1px solid #262626;
-  border-radius:16px;
-  transition:transform .3s, box-shadow .3s;
-}
-.card:hover {
-  transform:translateY(-6px);
-  box-shadow:0 0 30px rgba(168,85,247,.25);
-}
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
 
-.btn {
-  border:1px solid #a855f7;
-  color:#a855f7;
-  padding:10px 18px;
-  border-radius:999px;
-  transition:.3s;
-}
-.btn:hover {
-  background:#a855f7;
-  color:#0b0b0b;
-}
+    section {
+      padding: 80px 10%;
+    }
 
-.skill-bar {
-  background:#262626;
-  height:8px;
-  border-radius:999px;
-  overflow:hidden;
-}
-.skill-fill {
-  height:100%;
-  background:linear-gradient(90deg,#a855f7,#22d3ee);
-}
+    h1, h2 {
+      margin-bottom: 20px;
+    }
 
-</style>
+    h1 {
+      font-size: 3rem;
+      font-weight: 600;
+    }
+
+    h2 {
+      font-size: 2rem;
+      font-weight: 500;
+    }
+
+    p {
+      max-width: 700px;
+      opacity: 0.9;
+    }
+
+    .links a {
+      display: inline-block;
+      margin-right: 15px;
+      margin-top: 20px;
+      padding: 10px 18px;
+      border: 1px solid #fff;
+      border-radius: 25px;
+      text-decoration: none;
+      color: #fff;
+      transition: all 0.3s ease;
+    }
+
+    .links a:hover {
+      background: #ffffff;
+      color: #000;
+    }
+
+    /* Projects */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .project-card {
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-8px);
+    }
+
+    .project-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .project-content {
+      padding: 20px;
+    }
+
+    .project-content a {
+      color: #9ddcff;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    /* Art */
+    .art-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin-top: 40px;
+    }
+
+    .art-grid img {
+      width: 100%;
+      border-radius: 14px;
+      transition: transform 0.4s ease;
+    }
+
+    .art-grid img:hover {
+      transform: scale(1.05);
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px;
+      opacity: 0.7;
+      font-size: 0.9rem;
+    }
+  </style>
 </head>
 
 <body>
-<div id="root"></div>
 
-<script src="https://unpkg.com/react@18/umd/react.development.js"></script>
-<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <!-- HERO / ABOUT -->
+  <section>
+    <h1>Your Name</h1>
+    <p>
+      I work at the intersection of data, problem-solving, and creativity.
+      I enjoy transforming complex datasets into insights that influence decisions,
+      while continuously learning and adapting to new challenges.
+    </p>
 
-<script>
-const { createElement, useState } = React;
-const { createRoot } = ReactDOM;
+    <div class="links">
+      <a href="https://github.com/your-username" target="_blank">GitHub</a>
+      <a href="https://linkedin.com/in/your-profile" target="_blank">LinkedIn</a>
+      <a href="#" target="_blank">Resume</a>
+    </div>
+  </section>
 
-/* ---------------- DATA ---------------- */
+  <!-- PROJECTS -->
+  <section>
+    <h2>Projects</h2>
 
-const kpis = [
-  { label:"Records Analyzed", value:"25k+" },
-  { label:"Dashboards Built", value:"6+" },
-  { label:"Automation Reduction", value:"40%" },
-  { label:"Graduate GPA", value:"4.0" }
-];
+    <div class="projects-grid">
+      <div class="project-card">
+        <img src="assets/projects/project-placeholder.png" alt="Project 1">
+        <div class="project-content">
+          <h3>Project Title</h3>
+          <p>Short project summary goes here.</p>
+          <a href="#">View Project →</a>
+        </div>
+      </div>
 
-const skills = [
-  { name:"Python (Pandas, NumPy)", level:90 },
-  { name:"SQL (Analytics & Validation)", level:85 },
-  { name:"Data Visualization (Looker, Power BI)", level:80 },
-  { name:"Statistical Analysis (SPSS)", level:75 },
-  { name:"ETL & Data Cleaning", level:85 },
-  { name:"Automation (Selenium, Postman)", level:70 }
-];
+      <div class="project-card">
+        <img src="assets/projects/project-placeholder.png" alt="Project 2">
+        <div class="project-content">
+          <h3>Project Title</h3>
+          <p>Short project summary goes here.</p>
+          <a href="#">View Project →</a>
+        </div>
+      </div>
 
-const projects = [
-  {
-    title:"AI-Powered Recruitment Analytics Platform",
-    focus:"Data",
-    desc:"End-to-end analytics platform analyzing candidate quality, skill gaps, and hiring efficiency.",
-    metrics:["1,000+ synthetic records","Skill-gap insights","Composite scoring logic"]
-  },
-  {
-    title:"Washington State EV Data Analysis",
-    focus:"Data",
-    desc:"Statistical analysis of EV adoption trends using public datasets.",
-    metrics:["232k records","SPSS analysis","Policy insights"]
-  },
-  {
-    title:"KPI-Driven Business Dashboard",
-    focus:"Analytics",
-    desc:"Interactive dashboard translating raw data into executive-ready insights.",
-    metrics:["ETL pipeline","Looker Studio","Stakeholder KPIs"]
-  }
-];
+      <div class="project-card">
+        <img src="assets/projects/project-placeholder.png" alt="Project 3">
+        <div class="project-content">
+          <h3>Project Title</h3>
+          <p>Short project summary goes here.</p>
+          <a href="#">View Project →</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
-const experience = [
-  {
-    role:"Data Analyst Intern",
-    org:"Excelerate",
-    impact:"Built ETL pipelines and KPI dashboards supporting real-time business decisions."
-  },
-  {
-    role:"Quality Engineering Associate",
-    org:"Accenture",
-    impact:"Automated test suites and validated data integrity across enterprise systems."
-  }
-];
+  <!-- ART / CREATIVITY -->
+  <section>
+    <h2>Creative Process</h2>
+    <p>
+      Creativity fuels how I think, design, and solve problems.
+      These are glimpses of my work beyond data.
+    </p>
 
-/* ---------------- COMPONENTS ---------------- */
+    <div class="art-grid">
+      <img src="assets/art/art-placeholder.jpg" alt="Art 1">
+      <img src="assets/art/art-placeholder.jpg" alt="Art 2">
+      <img src="assets/art/art-placeholder.jpg" alt="Art 3">
+      <img src="assets/art/art-placeholder.jpg" alt="Art 4">
+      <img src="assets/art/art-placeholder.jpg" alt="Art 5">
+      <img src="assets/art/art-placeholder.jpg" alt="Art 6">
+    </div>
+  </section>
 
-const Section = ({ id, title, children }) =>
-  createElement("section",{id,className:"py-20"},
-    createElement("div",{className:"max-w-6xl mx-auto px-6"},
-      createElement("h2",{className:"text-4xl font-bold mb-10"},title),
-      children
-    )
-  );
+  <footer>
+    © 2026 Your Name · Built with curiosity and caffeine
+  </footer>
 
-const App = () => {
-  const [filter,setFilter]=useState("All");
-
-  return createElement("div",null,
-
-    /* NAV */
-    createElement("header",{className:"sticky top-0 bg-black/80 backdrop-blur border-b border-gray-800 z-50"},
-      createElement("div",{className:"max-w-6xl mx-auto px-6 py-4 flex justify-between items-center"},
-        createElement("span",{className:"font-bold accent-cyan"},"Harika Aakula"),
-        createElement("nav",{className:"space-x-6 text-sm"},
-          ["Overview","Skills","Projects","Experience","Contact"].map(s =>
-            createElement("a",{href:"#"+s.toLowerCase(),className:"hover:accent-cyan"},s)
-          )
-        )
-      )
-    ),
-
-    /* HERO */
-    createElement("section",{id:"overview",className:"py-28 bg-panel"},
-      createElement("div",{className:"max-w-6xl mx-auto px-6 text-center"},
-        createElement("h1",{className:"text-6xl font-extrabold mb-6"},
-          "Data Analyst ",
-          createElement("span",{className:"accent-purple"},"focused on insight, not noise")
-        ),
-        createElement("p",{className:"text-gray-400 max-w-3xl mx-auto mb-12"},
-          "I transform messy data into structured insights that support real business decisions."
-        ),
-        createElement("div",{className:"grid grid-cols-2 md:grid-cols-4 gap-6"},
-          kpis.map(k =>
-            createElement("div",{className:"card p-6"},
-              createElement("p",{className:"text-3xl font-bold accent-purple"},k.value),
-              createElement("p",{className:"text-sm text-gray-400"},k.label)
-            )
-          )
-        )
-      )
-    ),
-
-    /* SKILLS */
-    createElement(Section,{id:"skills",title:"Analytics Skillset"},
-      skills.map(s =>
-        createElement("div",{className:"mb-6"},
-          createElement("div",{className:"flex justify-between text-sm mb-1"},
-            createElement("span",null,s.name),
-            createElement("span",{className:"accent-cyan"},s.level+"%")
-          ),
-          createElement("div",{className:"skill-bar"},
-            createElement("div",{className:"skill-fill",style:{width:s.level+"%"}})
-          )
-        )
-      )
-    ),
-
-    /* PROJECTS */
-    createElement(Section,{id:"projects",title:"Selected Projects"},
-      createElement("div",{className:"grid md:grid-cols-3 gap-8"},
-        projects.map(p =>
-          createElement("div",{className:"card p-6"},
-            createElement("h3",{className:"text-xl font-bold mb-2"},p.title),
-            createElement("p",{className:"text-gray-400 mb-4"},p.desc),
-            createElement("ul",{className:"text-sm text-gray-300 list-disc ml-4"},
-              p.metrics.map(m => createElement("li",null,m))
-            )
-          )
-        )
-      )
-    ),
-
-    /* EXPERIENCE */
-    createElement(Section,{id:"experience",title:"Professional Experience"},
-      experience.map(e =>
-        createElement("div",{className:"card p-6 mb-6"},
-          createElement("h3",{className:"font-bold"},e.role),
-          createElement("p",{className:"accent-cyan text-sm mb-2"},e.org),
-          createElement("p",{className:"text-gray-400"},e.impact)
-        )
-      )
-    ),
-
-    /* CONTACT */
-    createElement("section",{id:"contact",className:"py-24 text-center"},
-      createElement("h2",{className:"text-4xl font-bold mb-6"},"Open to Data Analyst Roles"),
-      createElement("p",{className:"text-gray-400 mb-10"},"Available for full-time roles starting Jan 2026 (OPT)"),
-      createElement("div",{className:"flex justify-center gap-6"},
-        createElement("a",{href:"mailto:harika.aakula05@gmail.com",className:"btn"},"Email"),
-        createElement("a",{href:"https://github.com/harikaaakula",className:"btn"},"GitHub"),
-        createElement("a",{href:"https://linkedin.com/in/harika-aakula-634b48198",className:"btn"},"LinkedIn")
-      )
-    )
-  );
-};
-
-createRoot(document.getElementById("root")).render(createElement(App));
-</script>
 </body>
 </html>
