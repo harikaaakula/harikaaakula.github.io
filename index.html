@@ -1,148 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Harika Aakula | Data Analytics Portfolio</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Harika Aakula | Portfolio</title>
+
+<!-- Tailwind CSS -->
 <script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+<!-- AOS Animation Library -->
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<!-- Particles.js -->
+<script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.1/tsparticles.min.js"></script>
 
 <style>
-html { scroll-behavior: smooth; }
-body { background:#0b0b0b; color:#e5e7eb; font-family:'Poppins',sans-serif; overflow-x:hidden; }
-
-header { background:rgba(0,0,0,0.85); backdrop-blur:6px; }
-header a { transition:.3s; }
-header a:hover { color:#22d3ee; }
-
-section { background:#0b0b0b; padding-top:6rem; padding-bottom:6rem; }
-h2 { color:#a855f7; }
-
-.card { background:#141414; border:1px solid #262626; border-radius:16px; transition:transform .3s, box-shadow .3s; }
-.card:hover { transform:translateY(-6px); box-shadow:0 0 30px rgba(168,85,247,.25); }
-
-.btn { border:1px solid #a855f7; color:#a855f7; padding:10px 18px; border-radius:999px; transition:.3s; text-decoration:none; }
+body { font-family: 'Poppins', sans-serif; background:#0b0b0b; color:#e5e7eb; overflow-x:hidden; }
+.bg-panel { background:#141414; }
+.accent-purple { color:#a855f7; }
+.accent-cyan { color:#22d3ee; }
+.card { background:#1a1a1a; border-radius:16px; border:1px solid #262626; transition: transform .3s, box-shadow .3s; }
+.card:hover { transform: translateY(-6px); box-shadow: 0 0 30px rgba(168,85,247,.25); }
+.btn { border:1px solid #a855f7; color:#a855f7; padding:10px 18px; border-radius:999px; transition:.3s; }
 .btn:hover { background:#a855f7; color:#0b0b0b; }
-
-.skill-bar { background:#262626; height:8px; border-radius:999px; overflow:hidden; }
-.skill-fill { height:100%; background:linear-gradient(90deg,#a855f7,#22d3ee); }
-
-.fade-up { opacity:0; transform:translateY(20px); transition:all 0.8s ease-out; }
-.fade-up.visible { opacity:1; transform:translateY(0); }
-
-.project-img, .art-img, .profile-pic { width:100%; border-radius:12px; object-fit:cover; }
-
+.skill-icon { font-size:2rem; margin-bottom:8px; }
+.project-img { border-radius:12px; transition: transform .3s; }
+.project-img:hover { transform: scale(1.05); }
 </style>
 </head>
-<body>
 
+<body>
+<div id="particles"></div>
 <div id="root"></div>
 
 <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
 <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/react-icons@4.10.1/dist/react-icons.min.js"></script>
 
 <script>
 const { createElement, useState, useEffect } = React;
 const { createRoot } = ReactDOM;
+const { FaPython, FaDatabase, FaChartBar, FaProjectDiagram, FaCode, FaPaintBrush } = ReactIcons;
 
-/* ---------------- DATA ---------------- */
+/* --------------- DATA ---------------- */
+const about = {
+  name: "Harika Aakula",
+  intro: "Data Analyst & Cybersecurity Enthusiast with a passion for transforming data into actionable insights. Adaptable, quick learner, and creatively inclined in art and design.",
+  picture: "PLACEHOLDER_FOR_YOUR_PICTURE.jpg",
+  resume: "PLACEHOLDER_FOR_YOUR_RESUME.pdf"
+};
+
 const education = [
-  {
-    degree:"Master's in Information Systems",
-    school:"Saint Louis University – School for Professional Studies",
-    period:"2024 – 2026",
-    desc:"Courses: Information Systems Strategy, Data Retrieval, Visualization, Cloud Security, Applied Analytics"
-  }
+  { degree:"MS in Information Systems", uni:"Saint Louis University", years:"2025-2026", details:"Courses: Data Analytics, Cloud Security, Software Development, Applied Research Methods" }
 ];
 
 const experience = [
-  {
-    role:"Data Analyst Intern",
-    org:"Excelerate",
-    impact:"Built ETL pipelines and KPI dashboards supporting real-time business decisions."
-  },
-  {
-    role:"Quality Engineering Associate",
-    org:"Accenture",
-    impact:"Automated test suites and validated data integrity across enterprise systems."
-  }
+  { role:"Data Analyst Intern", org:"Excelerate", years:"2025", impact:"Built ETL pipelines and dashboards supporting real-time business decisions." },
+  { role:"Quality Engineering Associate", org:"Accenture", years:"2024-2025", impact:"Automated test suites and validated data integrity across enterprise systems." }
 ];
 
 const skills = [
-  { name:"Python (Pandas, NumPy)", level:90 },
-  { name:"SQL (Analytics & Validation)", level:85 },
-  { name:"Data Visualization (Power BI, Looker)", level:80 },
-  { name:"ETL & Data Cleaning", level:85 },
-  { name:"Automation (Selenium, Postman)", level:70 }
+  { icon:<FaPython />, name:"Python (Pandas, NumPy)" },
+  { icon:<FaDatabase />, name:"SQL & Databases" },
+  { icon:<FaChartBar />, name:"Data Visualization (Power BI, Looker)" },
+  { icon:<FaProjectDiagram />, name:"ETL & Data Cleaning" },
+  { icon:<FaCode />, name:"Web & App Development" },
+  { icon:<FaPaintBrush />, name:"Creative Design & Art" }
+];
+
+const achievements = [
+  "Dean’s List 2025",
+  "Certified Python & SQL Practitioner",
+  "Power BI Data Storytelling Award",
+  "Hackathon Winner - Cybersecurity Challenge"
 ];
 
 const projects = [
-  { title:"AI Cybersecurity Recruitment Platform", desc:"AI system analyzing resumes, scoring candidates, skill verification and recruiter dashboards.", img:"placeholder-project1.png", link:"#"},
-  { title:"Washington State Data Breach Dashboard", desc:"Power BI dashboard analyzing data breach trends and insights.", img:"placeholder-project2.png", link:"#"},
-  { title:"EV Adoption Statistical Analysis", desc:"Analysis of electric vehicle trends in Washington State using SPSS.", img:"placeholder-project3.png", link:"#"}
+  {
+    title:"AI-Powered Cybersecurity Recruitment Platform",
+    images:["PLACEHOLDER1.jpg","PLACEHOLDER2.jpg","PLACEHOLDER3.jpg"],
+    link:"#"
+  },
+  {
+    title:"Washington State Data Breach Dashboard",
+    images:["PLACEHOLDER4.jpg","PLACEHOLDER5.jpg","PLACEHOLDER6.jpg"],
+    link:"#"
+  },
+  {
+    title:"Electric Vehicles Statistical Analysis",
+    images:["PLACEHOLDER7.jpg","PLACEHOLDER8.jpg","PLACEHOLDER9.jpg"],
+    link:"#"
+  }
 ];
 
-const arts = [
-  "placeholder-art1.png","placeholder-art2.png","placeholder-art3.png",
-  "placeholder-art4.png","placeholder-art5.png","placeholder-art6.png"
+const creative = [
+  "ART_PLACEHOLDER1.jpg","ART_PLACEHOLDER2.jpg","ART_PLACEHOLDER3.jpg",
+  "ART_PLACEHOLDER4.jpg","ART_PLACEHOLDER5.jpg","ART_PLACEHOLDER6.jpg"
 ];
 
-/* ---------------- COMPONENTS ---------------- */
+/* --------------- COMPONENTS ---------------- */
 
-const Section = ({ id, title, children }) => createElement("section",{id,className:"fade-up"},
-  createElement("div",{className:"max-w-6xl mx-auto px-6"},
-    createElement("h2",{className:"text-4xl font-bold mb-10"},title),
-    children
-  )
-);
+const Section = ({ id, title, children }) =>
+  createElement("section",{id,className:"py-20"},
+    createElement("div",{className:"max-w-6xl mx-auto px-6"},
+      createElement("h2",{className:"text-4xl font-bold mb-10", "data-aos":"fade-up"},title),
+      children
+    )
+  );
 
 const App = () => {
-
-  useEffect(()=>{
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if(entry.isIntersecting) entry.target.classList.add("visible");
-      });
-    },{ threshold:0.2 });
-
-    document.querySelectorAll(".fade-up").forEach(el=>observer.observe(el));
-  },[]);
+  useEffect(()=>{AOS.init({duration:800});},[]);
 
   return createElement("div",null,
-
     /* NAV */
-    createElement("header",{className:"sticky top-0 z-50"},
+    createElement("header",{className:"sticky top-0 bg-black/80 backdrop-blur border-b border-gray-800 z-50"},
       createElement("div",{className:"max-w-6xl mx-auto px-6 py-4 flex justify-between items-center"},
-        createElement("span",{className:"font-bold text-2xl accent-cyan"},"Harika Aakula"),
+        createElement("span",{className:"font-bold accent-cyan"},"Harika Aakula"),
         createElement("nav",{className:"space-x-6 text-sm"},
-          ["About","Education","Experience","Projects","Skills","Achievements","Art","Contact"].map(s=>
+          ["About","Education","Experience","Skills","Projects","Achievements","Creative"].map(s =>
             createElement("a",{href:"#"+s.toLowerCase(),className:"hover:accent-cyan"},s)
           )
         )
       )
     ),
 
-    /* ABOUT */
-    createElement(Section,{id:"about",title:"About Me"},
-      createElement("div",{className:"flex flex-col md:flex-row items-center gap-8"},
-        createElement("img",{src:"placeholder-profile.png", alt:"Profile Pic", className:"profile-pic w-48 h-48"}),
-        createElement("div",null,
-          createElement("p",{className:"mb-4 text-gray-300"},
-            "I am an adaptable data analyst with a quick learning attitude. I transform raw data into actionable insights, and I am also passionate about art, crocheting, and painting."
-          ),
-          createElement("a",{href:"resume.pdf", className:"btn"},"Download Resume")
-        )
+    /* HERO / ABOUT */
+    createElement("section",{id:"about",className:"py-28 flex flex-col md:flex-row items-center max-w-6xl mx-auto px-6"},
+      createElement("img",{src:about.picture,className:"w-48 h-48 rounded-full mb-6 md:mb-0 md:mr-10 border-4 border-accent-purple", "data-aos":"fade-right"}),
+      createElement("div",{"data-aos":"fade-left"},
+        createElement("h1",{className:"text-5xl font-extrabold mb-4"},"Hi, I'm ", createElement("span",{className:"accent-purple"},about.name)),
+        createElement("p",{className:"text-gray-400 mb-6"},about.intro),
+        createElement("a",{href:about.resume, className:"btn"},"View Resume")
       )
     ),
 
     /* EDUCATION */
     createElement(Section,{id:"education",title:"Education"},
       education.map(e=>
-        createElement("div",{className:"card p-6 mb-6"},
-          createElement("h3",{className:"font-bold"},e.degree),
-          createElement("p",{className:"accent-cyan text-sm mb-2"},e.school),
-          createElement("p",{className:"text-gray-400 mb-2"},e.period),
-          createElement("p",{className:"text-gray-300"},e.desc)
+        createElement("div",{className:"card p-6 mb-6 flex flex-col md:flex-row items-center", "data-aos":"fade-up"},
+          createElement("div",{className:"md:w-2/3"},
+            createElement("h3",{className:"text-xl font-bold"},e.degree),
+            createElement("p",{className:"accent-cyan"},e.uni + " | " + e.years),
+            createElement("p",{className:"text-gray-400 mt-2"},e.details)
+          )
         )
       )
     ),
@@ -150,23 +152,11 @@ const App = () => {
     /* EXPERIENCE */
     createElement(Section,{id:"experience",title:"Professional Experience"},
       experience.map(e=>
-        createElement("div",{className:"card p-6 mb-6"},
-          createElement("h3",{className:"font-bold"},e.role),
-          createElement("p",{className:"accent-cyan text-sm mb-2"},e.org),
-          createElement("p",{className:"text-gray-300"},e.impact)
-        )
-      )
-    ),
-
-    /* PROJECTS */
-    createElement(Section,{id:"projects",title:"Projects"},
-      createElement("div",{className:"grid md:grid-cols-3 gap-6"},
-        projects.map(p=>
-          createElement("div",{className:"card p-4"},
-            createElement("img",{src:p.img, alt:p.title, className:"project-img mb-3"}),
-            createElement("h3",{className:"font-bold mb-1"},p.title),
-            createElement("p",{className:"text-gray-300 mb-2"},p.desc),
-            createElement("a",{href:p.link, className:"btn"}, "View Project")
+        createElement("div",{className:"card p-6 mb-6 flex flex-col md:flex-row", "data-aos":"fade-up"},
+          createElement("div",{className:"md:w-2/3"},
+            createElement("h3",{className:"text-xl font-bold"},e.role),
+            createElement("p",{className:"accent-cyan"},e.org + " | " + e.years),
+            createElement("p",{className:"text-gray-400 mt-2"},e.impact)
           )
         )
       )
@@ -174,53 +164,73 @@ const App = () => {
 
     /* SKILLS */
     createElement(Section,{id:"skills",title:"Skills"},
-      skills.map(s=>
-        createElement("div",{className:"mb-6"},
-          createElement("div",{className:"flex justify-between text-sm mb-1"},
-            createElement("span",null,s.name),
-            createElement("span",{className:"accent-cyan"},s.level+"%")
-          ),
-          createElement("div",{className:"skill-bar"},
-            createElement("div",{className:"skill-fill", style:{width:s.level+"%"}})
+      createElement("div",{className:"grid grid-cols-2 md:grid-cols-3 gap-8"},
+        skills.map(s=>
+          createElement("div",{className:"card p-6 flex flex-col items-center text-center", "data-aos":"zoom-in"},
+            createElement("div",{className:"skill-icon mb-2"},s.icon),
+            createElement("p",{className:"mt-2 font-semibold"},s.name)
           )
+        )
+      )
+    ),
+
+    /* PROJECTS */
+    createElement(Section,{id:"projects",title:"Projects"},
+      projects.map(p=>
+        createElement("div",{className:"card p-6 mb-6", "data-aos":"fade-up"},
+          createElement("h3",{className:"text-xl font-bold mb-4"},p.title),
+          createElement("div",{className:"grid grid-cols-3 gap-4 mb-4"},
+            p.images.map(img => createElement("img",{src:img,className:"project-img"}))
+          ),
+          createElement("a",{href:p.link,className:"btn"},"View Project")
         )
       )
     ),
 
     /* ACHIEVEMENTS */
     createElement(Section,{id:"achievements",title:"Achievements"},
-      createElement("ul",{className:"list-disc list-inside text-gray-300"},
-        [
-          "Certified in Applied Analytics",
-          "Designed end-to-end Power BI dashboards",
-          "Automated data validation pipelines",
-          "Multiple Kaggle data competitions participations"
-        ].map(a=>createElement("li",null,a))
-      )
-    ),
-
-    /* ART / CREATIVE WORK */
-    createElement(Section,{id:"art",title:"Creative Art"},
-      createElement("div",{className:"grid md:grid-cols-3 gap-4"},
-        arts.map(a=>
-          createElement("img",{src:a, className:"art-img fade-up", alt:"Art piece"})
+      createElement("div",{className:"grid md:grid-cols-2 lg:grid-cols-4 gap-6"},
+        achievements.map(a=>
+          createElement("div",{className:"card p-6 text-center", "data-aos":"flip-left"},
+            createElement("p",{className:"font-semibold"},a)
+          )
         )
       )
     ),
 
-    /* CONTACT */
-    createElement(Section,{id:"contact",title:"Contact"},
-      createElement("p",{className:"text-gray-300 mb-4"},"Open to full-time Data Analyst roles (OPT Jan 2026)"),
-      createElement("div",{className:"flex gap-4 flex-wrap"},
-        createElement("a",{href:"mailto:harika.aakula05@gmail.com", className:"btn"},"Email"),
-        createElement("a",{href:"https://github.com/harikaaakula", className:"btn"},"GitHub"),
-        createElement("a",{href:"https://linkedin.com/in/harika-aakula-634b48198", className:"btn"},"LinkedIn")
+    /* CREATIVE */
+    createElement(Section,{id:"creative",title:"Creative Portfolio"},
+      createElement("div",{className:"grid md:grid-cols-3 gap-6"},
+        creative.map(img => createElement("img",{src:img,className:"project-img", "data-aos":"fade-up"}))
       )
     )
-  )
+  );
 };
 
 createRoot(document.getElementById("root")).render(createElement(App));
+
+/* ---------------- Particles Background ---------------- */
+tsParticles.load("particles", {
+  fpsLimit: 60,
+  background: { color: "#0b0b0b" },
+  particles: {
+    number: { value: 80, density: { enable: true, area: 800 } },
+    color: { value: ["#a855f7","#22d3ee"] },
+    shape: { type: "circle" },
+    opacity: { value: 0.3 },
+    size: { value: { min: 1, max: 4 } },
+    move: { enable: true, speed: 1, direction: "none", outMode: "bounce" }
+  },
+  interactivity: {
+    events: { onHover: { enable: true, mode: "repulse" }, onClick: { enable: false } },
+    modes: { repulse: { distance: 100 } }
+  },
+  detectRetina: true
+});
+</script>
+
+<script>
+AOS.init({ duration: 800 });
 </script>
 </body>
 </html>
